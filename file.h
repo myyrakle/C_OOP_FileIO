@@ -9,6 +9,7 @@ struct File
 
 	int (*is_open)(File*);
 	void (*open)(File*, const char*);
+	void (*close)(File*);
 
 	void (*printf)(File*,const char*, ...);
 	void (*scanf)(File*,const char*, ...);
