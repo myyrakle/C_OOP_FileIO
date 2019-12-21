@@ -1,9 +1,21 @@
-#include <stdio.h>
+#include "file.h"
 
-struct File;
+int __File_is_open(File*);
+void __File_open(File*, const char*);
+void __File_printf(File*,const char*, ...);
+void __File_scanf(File*,const char*, ...);
 
-struct File
+File new_File(const char* filename)
 {
-	FILE* file;
+	File temp = {
+		.__file = fopen(filename),
+		.is_open = __File_is_open,
+		.open = __File_open,
+		.printf = __File_printf,
+		.scanf = __File_scanf
+	};
+	return temp;
+}
 
-};
+
+
